@@ -11,7 +11,11 @@ const forecast = (lat, long, callback)=>{
         } else if (body.error){
             callback('Error in place name, please try again', undefined)
         } else {
-            callback(undefined, `It is currently ${body.currently.temperature}'C degrees outside with a ${body.currently.precipProbability}% chance of rain`)
+            callback(undefined, {
+                temp: body.currently.temperature,
+                rainPercent: body.currently.precipProbability,
+                summary: body.currently.summary
+            })
         }
     })
 }

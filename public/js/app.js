@@ -10,8 +10,9 @@ console.log('Hi there world')
 let form = document.querySelector('form')
 let search = document.querySelector('input')
 
-let messageOne = document.getElementById('responseTitle');
-let messageTwo = document.getElementById('responseBody');
+let currentTemp = document.getElementById('responseTitle');
+let rainChance = document.getElementById('responseBody');
+let summary = document.getElementById('summary');
 
 form.addEventListener('submit', (e)=>{
     e.preventDefault()
@@ -19,11 +20,12 @@ form.addEventListener('submit', (e)=>{
     const location = search.value;
 
     // remove current Values
-    messageOne.innerText='';
-    messageTwo.innerText='';
+    currentTemp.innerText='';
+    rainChance.innerText='';
+    summary.innerText="";
 
     // loading message
-    messageOne.textContent="loading results"
+    currentTemp.textContent="loading results"
 
     // fetch request
 
@@ -31,11 +33,12 @@ form.addEventListener('submit', (e)=>{
     responce.json().then((data)=>{
         if(data.error){
             // if error print error to p tag 
-            messageOne.textContent=`${data.error}`
+            currentTemp.textContent=`${data.error}`
             console.log(data.error)
         } else {
-            messageOne.textContent=`${data.location}`
-            messageTwo.textContent=`${data.forecast}`
+            currentTemp.textContent=`Current Temp: ${data.temp}'c`
+            rainChance.textContent=`${data.rainPercent}% of rain`
+            summary.textContent = `Summary in ${data.address} is ${data.summary}`
 
             console.log(`location: ${data.location}`)
             console.log(`Temp: ${data.forecast}`)
