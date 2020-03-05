@@ -19,6 +19,7 @@ const forecast = require('./utils/forecast')
 You can then listen to app and run the express functions from it using >>> app.function */ 
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // create path for dir names
 // path.join takes two arguments (__dirname, 'path from this file to correct path')
@@ -160,6 +161,11 @@ app.get('*', (req, res) => {
     NOTE: the server will run until it is closed by command C in console
 */ 
 
-app.listen(3000, ()=>{
-    console.log('Server is running on port 3000')
+
+
+// this value is used for the local host on your PC 
+app.listen(port, ()=>{
+    console.log(`server running on ${port}`)
 })
+
+// when using heroku you need to change this

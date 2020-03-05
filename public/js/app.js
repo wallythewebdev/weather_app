@@ -27,10 +27,10 @@ form.addEventListener('submit', (e)=>{
 
     // fetch request
 
-    fetch(`http://localhost:3000/weather?address=${location}`).then((responce) => {
+    fetch(`/weather?address=${location}`).then((responce) => {
     responce.json().then((data)=>{
         if(data.error){
-            // if error print error to p tag
+            // if error print error to p tag 
             messageOne.textContent=`${data.error}`
             console.log(data.error)
         } else {
