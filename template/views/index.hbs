@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>weather app</title>
+        <link rel="icon" href="/img/icon.jpg">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div class="main-content">
+        {{>header}}
+        <p>{{titleMessage}}</p>
+
+        <form>
+            <input type="text" placeholder="address" name="addressInput">
+            <button>Search</button>
+        </form>
+
+        {{!-- responces from http request --}}
+        <p id="responseTitle"></p>
+        <p id="responseBody"></p>
+
+        </div>
+        {{>footer}}
+
+        <script src="./js/app.js"></script>
+    </body>
+</html>
